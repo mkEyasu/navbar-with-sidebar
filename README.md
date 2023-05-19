@@ -1,2 +1,2 @@
 # navbar-with-sidebar
-![](./Responsive Navigation.png)
+![](./Responsive_Navigation.png)
