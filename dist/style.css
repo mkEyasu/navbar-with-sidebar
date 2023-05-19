@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+:root {
+  --transition-effect: 0.3s ease-in-out;
+  --box-shadow: rgba(31, 38, 135, 0.37);
+  --border-color: rgba(255, 255, 255, 0.18);
+  --bg-color: rgba(255, 255, 255, 0.2);
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  background: url(./image/background_1.png);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+nav {
+  padding-block: 15px;
+  background-color: var(--bg-color);
+  box-shadow: 0 8px 32px 9 var(--box-shadow);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 0.1px solid var(--border-color);
+}
+
+.nav_wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 50px;
+  align-items: center;
+}
+
+.logo > h1 {
+  font-weight: bolder;
+  font-size: 30px;
+  font-family: "Abril Fatface", cursive;
+}
+
+.navigation_links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation_links .link h4 {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.navigation_links .link h4:hover {
+  background-color: #ff4747;
+}
+
+.navigation_links .link h4.active {
+  background-color: #ff4747;
+}
+
+/* ##########----- menu button style -----############ */
+.mobile_open_icon {
+  display: none;
+  padding: 10px;
+}
+.menu_icon {
+  width: 28px;
+  height: 3px;
+  transition: var(--transition-effect);
+  background-color: #fff;
+  position: relative;
+}
+.menu_icon::before {
+  content: "";
+  position: absolute;
+  margin-top: -8px;
+  width: 28px;
+  height: 3px;
+  background-color: #fff;
+}
+.menu_icon::after {
+  content: "";
+  position: absolute;
+  margin-top: 8px;
+  width: 28px;
+  height: 3px;
+  background-color: #fff;
+}
+
+.menu_icon.open {
+  transform: rotate(720deg);
+  transition: var(--transition-effect);
+  background: transparent;
+}
+
+.menu_icon.open::before {
+  transform: rotate(45deg) translate(4px, 8px);
+}
+.menu_icon.open::after {
+  transform: rotate(-45deg) translate(3px, -8px);
+}
+
+/* #######---- menu button style end ----####### */
+
+aside {
+  display: none;
+  position: fixed;
+  top: 73.2px;
+  width: 0;
+  transition: var(--transition-effect);
+  right: 0;
+  bottom: 0;
+  padding-top: 30px;
+  background-color: var(--bg-color);
+  box-shadow: 0 8px 32px 9 var(--box-shadow);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 0.1px solid var(--border-color);
+}
+
+aside.open {
+  transition: var(--transition-effect);
+  width: 250px;
+}
+
+aside .sideNavigation_links {
+  text-align: center;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+aside .sideNavigation_links .link h4 {
+  font-size: 18px;
+  padding: 6px;
+}
+
+aside .sideNavigation_links .link h4:hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  left: 0;
+  z-index: -1;
+  background-color: #ff4747;
+  animation: hoverAnimate 0.3s linear;
+}
+
+@media screen and (max-width: 750px) {
+  .nav_wrapper {
+    padding-inline: 20px;
+  }
+  .mobile_open_icon {
+    display: flex;
+  }
+  aside {
+    display: initial;
+  }
+  .navigation_links {
+    display: none;
+  }
+}
+
+@keyframes hoverAnimate {
+  from {
+    width: 4px;
+  }
+  to {
+    width: 100%;
+  }
+}
